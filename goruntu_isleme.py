@@ -3,7 +3,7 @@ import time
 from PIL import Image
 
 # Resimlerin olduğu klasör
-ASSETS_DIR = "/storage/emulated/0/BalikBotProjesi/assets/"
+ASSETS_DIR = "assets"
 
 IMG_SOLUCAN = os.path.join(ASSETS_DIR, "yem_solucan.png")
 IMG_HAMUR = os.path.join(ASSETS_DIR, "yem_hamur.png")
