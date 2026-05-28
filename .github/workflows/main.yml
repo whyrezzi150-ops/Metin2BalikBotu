@@ -24,8 +24,7 @@ jobs:
 
     - name: Derlemeyi Başlat
       run: |
-        buildozer clean
-        buildozer android debug
+        ~/.local/bin/buildozer android debug
 
     - name: APK Dosyasını İndirilebilir Yap
       uses: actions/upload-artifact@v4
