@@ -13,6 +13,13 @@ jobs:
     - name: Kodu Klonla
       uses: actions/checkout@v4
 
+    - name: ZIP Dosyasını Çıkar
+      run: |
+        if [ -f "proje.zip" ]; then
+          unzip -o proje.zip
+          rm proje.zip
+        fi
+
     - name: Python Kurulumu
       uses: actions/setup-python@v5
       with:
@@ -40,4 +47,3 @@ jobs:
       with:
         name: Metin2-Balik-Botu-APK
         path: bin/*.apk
-        
