@@ -1,4 +1,4 @@
-[[app]
+[app]
 title = Metin2 Balik Botu
 package.name = balikbotu
 package.domain = com.metin2
