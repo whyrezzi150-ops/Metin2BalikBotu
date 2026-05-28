@@ -1,5 +1,4 @@
 name: Buildozer APK Derleyici
-name: Buildozer APK Derleyici
 
 on:
   push:
@@ -17,18 +16,16 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y git zip unzip openjdk-17-jdk python3-pip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo5 cmake libffi-dev libssl-dev
-
-    - name: Buildozer ve Cython Kurulumu
-      run: |
         pip install --upgrade pip
         pip install buildozer cython
 
-    - name: Buildozer ile APK Derle
-      run: buildozer android debug
+    - name: Derlemeyi Başlat
+      run: |
+        buildozer clean
+        buildozer android debug
 
-    - name: APK Dosyasını Yükle
+    - name: APK Dosyasını İndirilebilir Yap
       uses: actions/upload-artifact@v4
       with:
-        name: Metin2-Balik-Botu-APK
+        name: BalikBotu-APK
         path: bin/*.apk
-
