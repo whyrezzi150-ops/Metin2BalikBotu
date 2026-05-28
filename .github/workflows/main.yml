@@ -28,26 +28,37 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y \
-        git zip unzip autoconf libtool pkg-config \
+        git zip unzip wget \
+        autoconf libtool pkg-config \
         zlib1g-dev libncurses5-dev libncursesw5-dev \
         cmake libffi-dev libssl-dev build-essential \
         ccache libltdl-dev openjdk-17-jdk
 
-    - name: Buildozer Kur
-      run: |
-        pip install --upgrade pip
-        pip install cython virtualenv buildozer
-
-    - name: Android SDK Kurulum + Lisans
+    - name: Android SDK Kur (MANUEL - FIX)
       run: |
         export ANDROID_HOME=$HOME/android-sdk
         mkdir -p $ANDROID_HOME
+
+        cd $HOME
+
+        wget https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
+        unzip commandlinetools-linux-*.zip
+
+        mkdir -p $ANDROID_HOME/cmdline-tools
+        mv cmdline-tools $ANDROID_HOME/cmdline-tools/latest
+
+        export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools
 
         yes | sdkmanager --licenses || true
 
         sdkmanager "platform-tools" \
                    "platforms;android-34" \
                    "build-tools;34.0.0"
+
+    - name: Buildozer Kur
+      run: |
+        pip install --upgrade pip
+        pip install cython virtualenv buildozer
 
     - name: APK Derle
       run: |
